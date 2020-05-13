@@ -1,0 +1,31 @@
+body {
+    background-color: #678b4fbb;
+}
+
+
+/* #banner-message {
+    display: none;
+} */
+
+.button-container {
+    color: brown;
+    overflow: hidden;
+}
+
+.movie:hover {
+    background: bisque;
+}
+
+p {
+    color: aquamarine;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.list-container {
+    margin-top: 4rem;
+}

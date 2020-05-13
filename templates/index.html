@@ -1,242 +1,57 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
-		
-		<title>Movie Review</title>
 
-		<!-- Loading third party fonts -->
-		<link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|" rel="stylesheet" type="text/css">
-		<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-		<!-- Loading main css file -->
-		<link rel="stylesheet" href="{% static "style.css" %}">
-		
-		<!--[if lt IE 9]>
+    <!-- JS, Popper.js, and jQuery -->
+    <script   src="https://code.jquery.com/jquery-3.5.1.min.js"   integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="   crossorigin="anonymous"></script>
+    <title>Movie Review</title>
+
+    <!-- Loading third party fonts -->
+
+    <!-- Loading main css file -->
+    <link rel="stylesheet" href="{% static "styles/index.css" %}">
+
+    <!--[if lt IE 9]>
 		<script src="js/ie-support/html5.js"></script>
 		<script src="js/ie-support/respond.js"></script>
 		<![endif]-->
 
-	</head>
+</head>
 
 
-	<body>
-
-		{% for movie in movies%}
-			<p>{{movie.id}}.  {{movie.name}}</p>
-		{% endfor %}
-
-	<p><a href="/?page={{prev_page}}" >Previous Page </a>&nbsp;&nbsp; <a href="/?page={{next_page}}" >Next Page </a></p>
-{% comment %} 
-		<div id="site-content">
-			<header class="site-header">
-				<div class="container">
-					<a href="index.html" id="branding">
-						<img src="{% static "images/logo.png" %}" alt="" class="logo">
-						<div class="logo-copy">
-							<h1 class="site-title">Company Name</h1>
-							<small class="site-description">Tagline goes here</small>
-						</div>
-					</a> <!-- #branding -->
-
-					<div class="main-navigation">
-						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
-						<ul class="menu">
-							<li class="menu-item current-menu-item"><a href="index.html">Home</a></li>
-							<li class="menu-item"><a href="about.html">About</a></li>
-							<li class="menu-item"><a href="review.html">Movie reviews</a></li>
-							<li class="menu-item"><a href="joinus.html">Join us</a></li>
-							<li class="menu-item"><a href="contact.html">Contact</a></li>
-						</ul> <!-- .menu -->
-
-						<form action="#" class="search-form">
-							<input type="text" placeholder="Search...">
-							<button><i class="fa fa-search"></i></button>
-						</form>
-					</div> <!-- .main-navigation -->
-
-					<div class="mobile-navigation"></div>
-				</div>
-			</header>
-			<main class="main-content">
-				<div class="container">
-					<div class="page">
-						<div class="row">
-							<div class="col-md-9">
-								<div class="slider">
-									<ul class="slides">
-										<li><a href="#"><img src="{% static "dummy/slide-1.jpg"%}" alt="Slide 1"></a></li>
-										<li><a href="#"><img src="{% static "dummy/slide-2.jpg"%}" alt="Slide 2"></a></li>
-										<li><a href="#"><img src="{% static "dummy/slide-3.jpg"%}" alt="Slide 3"></a></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="row">
-									<div class="col-sm-6 col-md-12">
-										<div class="latest-movie">
-											<a href="#"><img src="dummy/thumb-1.jpg" alt="Movie 1"></a>
-										</div>
-									</div>
-						</div> <!-- .row -->
-						<div class="row">
-							<div class="col-sm-6 col-md-3">
-								<div class="latest-movie">
-									<a href="#"><img src="dummy/thumb-3.jpg" alt="Movie 3"></a>
-								</div>
-							</div>
-						</div> <!-- .row -->
-						
-						<div class="row">
-							<div class="col-md-4">
-								<h2 class="section-title">December premiere</h2>
-								<p>Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-								<ul class="movie-schedule">
-									<li>
-										<div class="date">16/12</div>
-										<h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
-									</li>
-									<li>
-										<div class="date">16/12</div>
-										<h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
-									</li>
-									<li>
-										<div class="date">16/12</div>
-										<h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
-									</li>
-									<li>
-										<div class="date">16/12</div>
-										<h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
-									</li>
-								</ul> <!-- .movie-schedule -->
-							</div>
-							<div class="col-md-4">
-								<h2 class="section-title">November premiere</h2>
-								<p>Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-								<ul class="movie-schedule">
-									<li>
-										<div class="date">16/12</div>
-										<h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
-									</li>
-									<li>
-										<div class="date">16/12</div>
-										<h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
-									</li>
-									<li>
-										<div class="date">16/12</div>
-										<h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
-									</li>
-									<li>
-										<div class="date">16/12</div>
-										<h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
-									</li>
-								</ul> <!-- .movie-schedule -->
-							</div>
-							<div class="col-md-4">
-								<h2 class="section-title">October premiere</h2>
-								<p>Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-								<ul class="movie-schedule">
-									<li>
-										<div class="date">16/12</div>
-										<h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
-									</li>
-									<li>
-										<div class="date">16/12</div>
-										<h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
-									</li>
-									<li>
-										<div class="date">16/12</div>
-										<h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
-									</li>
-									<li>
-										<div class="date">16/12</div>
-										<h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
-									</li>
-								</ul> <!-- .movie-schedule -->
-							</div>
-						</div>
-					</div>
-				</div> <!-- .container -->
-			</main>
-			<footer class="site-footer">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-2">
-							<div class="widget">
-								<h3 class="widget-title">About Us</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia tempore vitae mollitia nesciunt saepe cupiditate</p>
-							</div>
-						</div>
-						<div class="col-md-2">
-							<div class="widget">
-								<h3 class="widget-title">Recent Review</h3>
-								<ul class="no-bullet">
-									<li><a href="#">Lorem ipsum dolor</a></li>
-									<li><a href="#">Sit amet consecture</a></li>
-									<li><a href="#">Dolorem respequem</a></li>
-									<li><a href="#">Invenore veritae</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-md-2">
-							<div class="widget">
-								<h3 class="widget-title">Help Center</h3>
-								<ul class="no-bullet">
-									<li><a href="#">Lorem ipsum dolor</a></li>
-									<li><a href="#">Sit amet consecture</a></li>
-									<li><a href="#">Dolorem respequem</a></li>
-									<li><a href="#">Invenore veritae</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-md-2">
-							<div class="widget">
-								<h3 class="widget-title">Join Us</h3>
-								<ul class="no-bullet">
-									<li><a href="#">Lorem ipsum dolor</a></li>
-									<li><a href="#">Sit amet consecture</a></li>
-									<li><a href="#">Dolorem respequem</a></li>
-									<li><a href="#">Invenore veritae</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-md-2">
-							<div class="widget">
-								<h3 class="widget-title">Social Media</h3>
-								<ul class="no-bullet">
-									<li><a href="#">Facebook</a></li>
-									<li><a href="#">Twitter</a></li>
-									<li><a href="#">Google+</a></li>
-									<li><a href="#">Pinterest</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-md-2">
-							<div class="widget">
-								<h3 class="widget-title">Newsletter</h3>
-								<form action="#" class="subscribe-form">
-									<input type="text" placeholder="Email Address">
-								</form>
-							</div>
-						</div>
-					</div> <!-- .row -->
-
-					<div class="colophon">Copyright 2014 Company name, Designed by Themezy. All rights reserved</div>
-				</div> <!-- .container -->
-
-			</footer>
+<body>
+	<div style="width: 100%;">
+   		<div style="float:left; width: 50%">
+		   <button id="send-btn"> Send </button>
+		   <p id="error"></p>
+		   <div> <p>Your choices -</p></div>
+			<div class="selected-list"></div>
+   		</div>
+   		<div style="float:right; width:50%;">
+			<div class="button-container sticky">
+				<button id="pre-btn">previous</button>
+				<button id="page-btn"></button>
+				<button id="next-btn">next </button>
+				<input type="text" id="search-tab">
+				<button id="search">Search</button>
+			</diV>
+			<div class="list-container">
+				<div class="list" ></div>
+			</diV>
 		</div>
-		<!-- Default snippet for navigation -->
-		
+	</div>
+	<form class="form-csrf">{% csrf_token %}</form>
+<div style="clear:both"><p class="banner-message">Hello there</p></div>
 
-
-		<script src="{% static "js/jquery-1.11.1.min.js"%}%"></script>
-		<script src="{% static "js/plugins.js"%}%"></script>
-		<script src="{% static "js/app.js"%}%"></script>
-		 {% endcomment %}
-	</body>
+    
+    
+	<script src="{% static "js/boxes.js"%}"></script>
+</body>
 
 </html>
