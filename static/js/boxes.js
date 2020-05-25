@@ -18,6 +18,28 @@ function select(movie_id) {
     renderMovie();
 }
 
+function getPage(movies){
+    already_selected = Array()
+    selected_movies.forEach((val)=>{
+        console.log(val);
+        already_selected.push(val.name);
+    });
+    console.log(selected_movies);
+    // for(let c in selected_movies)
+    //     already_selected.push(c)
+    let data = `<h1> Recommended Movies - </h1><ul>`;
+    for(let a in movies){
+        console.log(`"${a}" ${a in already_selected}`);
+        if(!(already_selected.find(val=>a===val)))
+            data += `<li>${a}</li>`;
+    }
+        
+    
+    data += '</ul><a href="/">Home</a>';
+
+    return data;
+}
+
 function renderMovie() {
     $("#page-btn").html(String(page));
     $(".list").html("");
@@ -102,7 +124,7 @@ function parse_selected_movies() {
 
     selected_movies.forEach((movie) => {
         let tmp = $(`#movie-rating-${movie.id}`).val();
-        if (tmp in [1, 2, 3, 4, 5]) {
+        if (tmp>=1 && tmp<=5) {
             movie.rating = tmp;
         } else
             return false;
@@ -116,17 +138,19 @@ $("#send-btn").on("click", () => {
     let err = false;
     if (parse_selected_movies()) {
         selected_movies.forEach((movie) => {
-            if (movie.rating in [1, 2, 3, 4, 5])
-                list.push({ movie: movie.id, rating: movie.rating });
-            else
+            if (movie.rating>=1 && movie.rating<=5)
+                list.push({ movie: movie.name, rating: Number(movie.rating) });
+            else{
+                console.log(movie.rating);
                 err = true;
+            }
         });
         if (err) {
             $("#error").html("Rating should be between 1 to 5");
             return;
         }
         req = {
-            movies: list,
+            movies: JSON.stringify(list),
             csrfmiddlewaretoken: $(".form-csrf input").val()
         }
 
@@ -135,7 +159,10 @@ $("#send-btn").on("click", () => {
             method: 'post',
             data: req,
             success: (result) => {
-                alert(`message recieved - ${result}`);
+                console.log(result.movies);
+                // console.log('Hey, ', JSON.parse(result)['movies']);
+                // alert(`message recieved - ${JSON.parse(result.movies)}`);
+                $('body').html(getPage(result.movies));
             }
         });
 
